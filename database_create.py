@@ -69,6 +69,15 @@ def create_database_with_five_topics():
         correct_option TEXT NOT NULL
     )
     ''')
+      # Create 'user_info' table without username
+    cursor.execute('''
+    CREATE TABLE IF NOT EXISTS user_info (
+        id INTEGER PRIMARY KEY,
+        chosen_topic TEXT NOT NULL,
+        responses TEXT NOT NULL,
+        grade REAL NOT NULL
+    )
+    ''')
 
     # Sample questions for 'Coding' topic
     coding_questions = [
