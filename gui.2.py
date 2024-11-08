@@ -111,6 +111,7 @@ def start_quiz_window(selected_topic):
                 messagebox.showinfo("Quiz Completed", f"Your final score is {grade:.2f}%")
                 save_user_info(selected_topic, responses, grade)
                 quiz_window.destroy()
+                root.deiconify()  # Show the main window again
 
         # Update the submit button's command to call submit_answer
         submit_button.config(command=submit_answer)
@@ -120,6 +121,7 @@ def start_quiz_window(selected_topic):
 
 # Function to show the first window (topic selection)
 def start_topic_selection_window():
+    global root
     root = tk.Tk()
     root.title("Quiz Topic Selection")
 
@@ -135,7 +137,7 @@ def start_topic_selection_window():
 
     def start_quiz():
         selected_topic = topic_combobox.get()
-        root.destroy()  # Close the first window
+        root.withdraw()  # Hide the first window
         start_quiz_window(selected_topic)  # Open the quiz window for the selected topic
 
     # Button to start the quiz
